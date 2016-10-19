@@ -3,12 +3,7 @@ const app = angular.module('cameraApp', [])
 app.controller('mainController', ['$scope', function($scope){
 
   $scope.options = ['price', 'rating']
-  // angular.forEach(camera, function(){
-  //   if(camera.onSale === 'true') {
-  //     ng-class='orange';
-  //     console.log('orange');
-  //   }
-  // })
+
 
   $scope.addItem = function() {
     $scope.cameraArray.push({title: $scope.title, image: $scope.img, rating: $scope.rating, price: $scope.price, onSale: $scope.onSale})
