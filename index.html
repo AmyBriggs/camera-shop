@@ -8,10 +8,13 @@
     <script src ="app.js"></script>
 </head>
 
-<body ng-controller="mainController">
-    <h1>Camera Shop</h1>
-    <select ng-model="orderby" ng-options="option for option in options">
-  
+<body ng-controller="mainController" style="text-align: center;">
+    <h1>Welcome to the Camera Shop!</h1>
+    <div>
+      <h4>Order selection by:</h4>
+      <select ng-model="orderby" ng-options="option for option in options">
+    </div>
+
     </select>
 
     <div ng-repeat="camera in cameraArray | orderBy: orderby">
@@ -20,9 +23,25 @@
         <p>Rating: {{camera.rating}}</p>
         <p ng-show="camera.onSale" style="color: orange">{{camera.price | currency}} ON SALE!</p>
         <p ng-hide="camera.onSale">{{camera.price | currency}}</p>
+        <button ng-click="addCamera(camera)">Add To Cart</button>
       </div>
 
+      <!-- Shopping Cart -->
+
+    <div>
+      <h3>Shopping Cart</h3>
+      <ul>
+        <li ng-repeat="camera in cameraItems track by $index">
+          {{camera.title}}:   {{camera.price | currency}}
+        </li>
+      </ul>
+
+      <h3>Total Cost: </h3>
+      <span>{{totalCost | currency}}</span>
     </div>
+
+
+
 
 </body>
 
